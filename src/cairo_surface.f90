@@ -104,7 +104,7 @@ Contains
 
   Integer Function CairoCreateFromPng(this, filename) Result(info)
     class(CairoSurface), intent(inout) :: this
-    character(KIND=c_char), intent(in) :: filename
+    character(len=*, KIND=c_char), intent(in) :: filename
     character(len=:,kind=c_char), allocatable, target :: fname
     info = -1
     fname = filename//C_NULL_CHAR
@@ -122,7 +122,7 @@ Contains
 
   Integer Function CairoWriteToPNG(this, filename) Result(info)
     class(CairoSurface), intent(inout) :: this
-    character(KIND=c_char), intent(in) :: filename
+    character(len=*, KIND=c_char), intent(in) :: filename
     character(len=:,kind=c_char), allocatable, target :: fname
     fname = filename//C_NULL_CHAR
     info = cairo_surface_write_to_png(this%surface, fname)
